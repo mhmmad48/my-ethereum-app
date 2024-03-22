@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+
 import * as ethers from 'ethers';
+
+import "bootstrap/dist/css/bootstrap.css";
+
 
 const provider = new ethers.providers.JsonRpcProvider(
   'https://eth-mainnet.alchemyapi.io/v2/demo' // Replace with your Infura project ID
@@ -46,16 +51,24 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Ethereum Mainnet Info</h1>
-      <p>Last Block Number: {lastBlockNumber}</p>
+      <h1 style={{
+                  color: "green",
+                  textAlign:'center',
+                  }} className="mt-5">Ethereum Mainnet Info</h1>
+      <p style={{
+        color:'green'
+      }} className="ml-5">Last Block Number: {lastBlockNumber}</p>
       <input
         type="text"
+        className="text-muted"
         placeholder="Enter Ethereum address"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
       />
-      <button onClick={() => getUsdtBalance(address)}>Get USDT Balance</button>
-      <p>USDT Balance: {usdtBalance}</p>
+      <button  onClick={() => getUsdtBalance(address)}>Get USDT Balance</button>
+      <p style={{
+        color:'green'
+      }} className="mt-3">USDT Balance: {usdtBalance}</p>
     </div>
   );
 }
